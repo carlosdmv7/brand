@@ -41,10 +41,10 @@ on drift. The Altair theme and Streamlit chrome ship as the `streamlit` extra.
 
 ## Consequences
 
-- A colour change is one edit, one tag, then `brand sync` in each consumer.
+- A colour change is one edit and one merge, then `brand sync` in each consumer.
   It is not a find-and-replace across repos.
 - Every consumer depends on a git URL. Streamlit Community Cloud installs it
   from `requirements.txt` or `pyproject.toml` like any other dependency, but
   the repo must stay public.
 - Bumping the brand is a deliberate per-repo upgrade, because consumers pin a
-  tag. A repo can lag, but `--check` makes the lag visible.
+  commit. A repo can lag, but `--check` makes the lag visible.

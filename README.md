@@ -24,7 +24,7 @@ a CI check that fails when a repo drifts.
 ## Use it in a Streamlit app
 
 ```bash
-uv add "brand[streamlit] @ git+https://github.com/carlosdmv7/brand@v0.1.0"
+uv add "brand[streamlit] @ git+https://github.com/carlosdmv7/brand@c3973c4a16bbbe57905ccc7d83a6cb94378b3bba"
 ```
 
 In `.streamlit/config.toml`, delete the hand-written `[theme*]` tables and put
@@ -67,7 +67,7 @@ Wrap the token block of `styles.css` in
 `/* >>> brand ... */` … `/* <<< brand */`, then:
 
 ```bash
-uvx --from git+https://github.com/carlosdmv7/brand@v0.1.0 brand sync css styles.css
+uvx --from git+https://github.com/carlosdmv7/brand@c3973c4a16bbbe57905ccc7d83a6cb94378b3bba brand sync css styles.css
 ```
 
 Site-only tokens (shadows, focus ring) stay in a second `:root` outside the
@@ -77,8 +77,11 @@ markers.
 
 1. Edit `src/brand/tokens.py`, then `BRAND.md` if a rule changed.
 2. `make check`. The contrast tests fail if the change breaks AA.
-3. Bump `version`, then tag it (`git tag v0.2.0`).
-4. In each consumer: bump the tag, run `brand sync`, and commit.
+3. Bump `version` and merge to `main`.
+4. In each consumer: move the pinned commit, run `brand sync`, and commit.
+   Pin a commit SHA in the PEP 508 form (`brand @ git+…@<sha>`) rather than
+   `[tool.uv.sources]`. A plain pip install, like Streamlit Community Cloud's,
+   then resolves the same commit and never a same-named PyPI package.
 
 ## Development
 
