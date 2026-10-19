@@ -1,7 +1,7 @@
 # Brand
 
 [![CI](https://github.com/carlosdmv7/brand/actions/workflows/ci.yml/badge.svg)](https://github.com/carlosdmv7/brand/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-3.12%20|%203.13-blue)
+![Python](https://img.shields.io/badge/python-3.11%20|%203.12%20|%203.13-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 The design system behind my portfolio and its apps ("warm paper, petrol ink")
@@ -51,6 +51,15 @@ from brand.tokens import RUST_500, TEAL_700
 
 Anything that is not a theme key goes **after** the end marker as its own
 table, for example an app's `[[theme.fontFaces]]` or `[server]`.
+
+An app whose charts need that extra family too re-registers the chart theme
+once, at import:
+
+```python
+import brand.altair
+
+brand.altair.register(font_prefix=["Twemoji Country Flags"])
+```
 
 ## Use it in the portfolio (no Python project needed)
 
