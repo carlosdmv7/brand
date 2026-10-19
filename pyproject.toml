@@ -1,6 +1,6 @@
 [project]
 name = "brand"
-version = "0.1.0"
+version = "0.2.0"
 description = "Shared design system: brand tokens, usage rules, and generators for every repo."
 readme = "README.md"
 license = "MIT"
@@ -8,7 +8,7 @@ license-files = ["LICENSE"]
 # The LOWEST version you support, not the one on your machine. If the project
 # will be deployed somewhere that picks its own interpreter (Streamlit Community
 # Cloud does, from its dashboard), keep the floor at what that platform runs.
-requires-python = ">=3.12,<3.14"
+requires-python = ">=3.11,<3.14"
 # A library, not an app: ranges, not pins. Each app's own uv.lock does the
 # pinning. The core (tokens, sync, contrast) is standard library only.
 dependencies = []
@@ -46,7 +46,7 @@ build-backend = "uv_build"
 [tool.ruff]
 # Must match the floor in requires-python, or ruff suggests syntax that crashes
 # on the oldest interpreter you claim to support.
-target-version = "py312"
+target-version = "py311"
 line-length = 100
 extend-exclude = ["data", "logs", "notebooks"]
 

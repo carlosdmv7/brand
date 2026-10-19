@@ -1,7 +1,7 @@
 # Brand
 
 [![CI](https://github.com/carlosdmv7/brand/actions/workflows/ci.yml/badge.svg)](https://github.com/carlosdmv7/brand/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-3.12%20|%203.13-blue)
+![Python](https://img.shields.io/badge/python-3.11%20|%203.12%20|%203.13-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 The design system behind my portfolio and its apps ("warm paper, petrol ink")
@@ -24,7 +24,7 @@ a CI check that fails when a repo drifts.
 ## Use it in a Streamlit app
 
 ```bash
-uv add "brand[streamlit] @ git+https://github.com/carlosdmv7/brand@v0.1.0"
+uv add "brand[streamlit] @ git+https://github.com/carlosdmv7/brand@c3973c4a16bbbe57905ccc7d83a6cb94378b3bba"
 ```
 
 In `.streamlit/config.toml`, delete the hand-written `[theme*]` tables and put
@@ -52,13 +52,22 @@ from brand.tokens import RUST_500, TEAL_700
 Anything that is not a theme key goes **after** the end marker as its own
 table, for example an app's `[[theme.fontFaces]]` or `[server]`.
 
+An app whose charts need that extra family too re-registers the chart theme
+once, at import:
+
+```python
+import brand.altair
+
+brand.altair.register(font_prefix=["Twemoji Country Flags"])
+```
+
 ## Use it in the portfolio (no Python project needed)
 
 Wrap the token block of `styles.css` in
 `/* >>> brand ... */` … `/* <<< brand */`, then:
 
 ```bash
-uvx --from git+https://github.com/carlosdmv7/brand@v0.1.0 brand sync css styles.css
+uvx --from git+https://github.com/carlosdmv7/brand@c3973c4a16bbbe57905ccc7d83a6cb94378b3bba brand sync css styles.css
 ```
 
 Site-only tokens (shadows, focus ring) stay in a second `:root` outside the
@@ -68,8 +77,11 @@ markers.
 
 1. Edit `src/brand/tokens.py`, then `BRAND.md` if a rule changed.
 2. `make check`. The contrast tests fail if the change breaks AA.
-3. Bump `version`, then tag it (`git tag v0.2.0`).
-4. In each consumer: bump the tag, run `brand sync`, and commit.
+3. Bump `version` and merge to `main`.
+4. In each consumer: move the pinned commit, run `brand sync`, and commit.
+   Pin a commit SHA in the PEP 508 form (`brand @ git+…@<sha>`) rather than
+   `[tool.uv.sources]`. A plain pip install, like Streamlit Community Cloud's,
+   then resolves the same commit and never a same-named PyPI package.
 
 ## Development
 

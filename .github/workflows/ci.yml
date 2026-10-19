@@ -13,8 +13,12 @@ concurrency:
 
 jobs:
   check:
-    name: Lint + format + tests
+    name: Lint + format + tests (py${{ matrix.python }})
     runs-on: ubuntu-latest
+    # The floor and the newest: consumers range from >=3.11 to 3.13.
+    strategy:
+      matrix:
+        python: ["3.11", "3.13"]
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +29,7 @@ jobs:
 
       # --frozen: fail if uv.lock is out of date instead of silently re-resolving.
       - name: Install dependencies
-        run: uv sync --frozen
+        run: uv sync --frozen --python ${{ matrix.python }}
 
       # Same commands as `make lint`, `make format-check` and `make test`, so a
       # green `make check` locally means a green PR.
