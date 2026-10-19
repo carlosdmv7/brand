@@ -35,3 +35,10 @@ def test_scales_serialise_as_tuples():
         .encode(color=alt.Color("x:Q", scale=alt.Scale(range=SEQUENTIAL[:4])))
     )
     assert chart.to_dict()["encoding"]["color"]["scale"]["range"] == list(SEQUENTIAL[:4])
+
+
+def test_discrete_axes_use_the_body_font_and_continuous_ones_mono():
+    config = brand.altair.config()["config"]
+
+    assert config["axis"]["labelFont"].startswith("IBM Plex Mono")
+    assert config["axisDiscrete"]["labelFont"].startswith("Public Sans")

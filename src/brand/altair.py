@@ -59,7 +59,7 @@ def config(font_prefix: Sequence[str] = ()) -> alt.theme.ThemeConfig:
                 "subtitleFontSize": 12,
             },
             # Axis furniture is INK_MUTED — readable but recessive, so the marks
-            # carry the colour. Labels are mono: they are almost always figures.
+            # carry the colour. Labels on continuous axes are figures, so mono.
             "axis": {
                 # Mono labels are wide; drop every other one on collision.
                 "labelOverlap": True,
@@ -74,6 +74,13 @@ def config(font_prefix: Sequence[str] = ()) -> alt.theme.ThemeConfig:
                 "gridColor": BORDER,
                 "gridDash": [2, 2],
             },
+            # Labels on discrete axes are names (a barrio, a technology), not
+            # figures, so they take the body font. It also keeps them measurable:
+            # a browser downloads a web font only once something on the page uses
+            # it, and on a first visit nothing but the charts uses the mono, so
+            # Vega sized a band axis with the narrower fallback and the real glyphs
+            # overflowed the chart's left edge. The body font is always loaded.
+            "axisDiscrete": {"labelFont": body},
             "axisX": {"grid": False},
             "axisY": {"domain": False, "ticks": False, "labelPadding": 6},
             "legend": {

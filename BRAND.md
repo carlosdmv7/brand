@@ -59,7 +59,8 @@ a bug.
 | Diverging | teal-700 → teal-200 → sand → amber → rust | Anything with a midpoint. Teal = below/good. |
 | Sequential | sand → amber → rust-500 → rust-700 → rust-900 | Counts, density, heat |
 
-Axis labels and figures are set in mono, in `ink-muted`. Grid lines are
+Figures (continuous axes, value labels) are set in mono and names on
+discrete axes in the body font, both in `ink-muted`. Grid lines are
 dashed `border` hairlines, with no vertical grid. Titles are in Archivo 700,
 left-aligned.
 
