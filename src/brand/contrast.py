@@ -49,6 +49,10 @@ PAIRS: tuple[Pair, ...] = (
     Pair("sand-100", "petrol-900", TEXT, "band text"),
     Pair("white", "petrol-900", TEXT, "band value text"),
     Pair("sand-400", "petrol-900", TEXT, "freshness strip cell labels"),
+    Pair("gain-700", "surface", TEXT, "gain figures"),
+    Pair("gain-700", "surface-2", TEXT, "gain figures on cards"),
+    Pair("loss-700", "surface", TEXT, "loss figures"),
+    Pair("loss-700", "surface-2", TEXT, "loss figures on cards"),
     # ── graphical ────────────────────────────────────────────────────────────
     Pair("rust-500", "surface", GRAPHIC, "icons / rules on page bg"),
     Pair("teal-500", "surface", GRAPHIC, "icons / fills on page bg"),

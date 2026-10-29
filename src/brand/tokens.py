@@ -44,6 +44,12 @@ RUST_300 = "#DF844E"  # graphical, on PETROL_900 only (3.4:1)
 SAND_400 = "#C4BE9D"  # muted label text on PETROL_900 (5.0:1)
 WHITE = "#FFFFFF"  # labels on RUST_700 / TEAL_700 / PETROL_900 fills only
 
+# Money that changed sign or value: a gain and a loss (ADR 0002). Text on the
+# light surfaces, always with a sign and an arrow, never alone. Teal and rust
+# keep meaning "money in" and "money out"; these mean "better" and "worse".
+GAIN_700 = "#267A3E"  # gains, figures that improved
+LOSS_700 = "#B42318"  # losses, figures that got worse
+
 #: Every colour by its CSS name. Renderers iterate this, in this order.
 COLORS: dict[str, str] = {
     "sand-100": SAND_100,
@@ -66,6 +72,8 @@ COLORS: dict[str, str] = {
     "rust-300": RUST_300,
     "sand-400": SAND_400,
     "white": WHITE,
+    "gain-700": GAIN_700,
+    "loss-700": LOSS_700,
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -73,7 +81,16 @@ COLORS: dict[str, str] = {
 # ══════════════════════════════════════════════════════════════════════════════
 #: Colours that may carry small text on SURFACE. AMBER_500 (2.1:1), SAND_100
 #: and RUST_500 (3.4:1) are fills, icons and charts only — never text.
-TEXT_SAFE_ON_SURFACE: tuple[str, ...] = (INK, INK_MUTED, INK_MUTED_2, RUST_700, TEAL_700, RUST_900)
+TEXT_SAFE_ON_SURFACE: tuple[str, ...] = (
+    INK,
+    INK_MUTED,
+    INK_MUTED_2,
+    RUST_700,
+    TEAL_700,
+    RUST_900,
+    GAIN_700,
+    LOSS_700,
+)
 
 #: White labels are only legible on these fills — never on the 500s.
 WHITE_LABEL_FILLS: tuple[str, ...] = (RUST_700, TEAL_700, PETROL_900)

@@ -29,6 +29,8 @@ a bug.
 | `ink-muted-2` | `#4E636D` | Secondary text on `surface-2`, tints and sand |
 | `rust-700` | `#A8501F` | Links, rust text, primary button fill (white label), focus ring |
 | `rust-900` | `#6E2F10` | Alarm text. The palette has no red. |
+| `gain-700` | `#267A3E` | Gains and improvements, as signed text with an arrow. |
+| `loss-700` | `#B42318` | Losses and figures that got worse, as signed text with an arrow. |
 | `teal-700` | `#2E6B5E` | Success text, secondary button fill (white label) |
 | `rust-050` / `teal-050` | `#FBEADF` / `#E4F0EC` | Tint backgrounds |
 | `teal-200` / `rust-300` / `sand-400` | `#7FB3A4` / `#DF844E` / `#C4BE9D` | On the petrol band only |
@@ -48,8 +50,12 @@ a bug.
 6. **No CSS injection in Streamlit.** Colour comes only from the generated
    `config.toml` theme and from native `:color[...]{foreground=...}` markdown,
    so an upgrade can never silently break the look.
-7. **No green→red.** Use the teal↔rust diverging scale for good/bad. It
-   survives the common forms of colour blindness.
+7. **Green and red only for gains and losses** (ADR 0002). `gain-700` and
+   `loss-700` colour a signed change of money (a return, a difference
+   against last month), always with its sign and an arrow, so colour is never
+   the only cue. Charts keep the teal↔rust diverging scale, which survives
+   the common forms of colour blindness; teal and rust still mean money in
+   and money out.
 
 ## Charts
 
