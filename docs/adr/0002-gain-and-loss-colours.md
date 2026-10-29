@@ -14,7 +14,7 @@ theme teal reads as a terminal green rather than as "good".
 
 ## Decision
 
-- Two text tokens, `gain-700` (#267A3E) and `loss-700` (#B42318), both AA on
+- Two text tokens, `gain-700` (#16794A) and `loss-700` (#B42318), both AA on
   `surface` and `surface-2` (measured in `brand contrast`).
 - They colour only a **signed change**: a return, a gain or loss, a
   difference against a reference. They always come with a sign and an arrow

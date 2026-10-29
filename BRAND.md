@@ -29,7 +29,7 @@ a bug.
 | `ink-muted-2` | `#4E636D` | Secondary text on `surface-2`, tints and sand |
 | `rust-700` | `#A8501F` | Links, rust text, primary button fill (white label), focus ring |
 | `rust-900` | `#6E2F10` | Alarm text. The palette has no red. |
-| `gain-700` | `#267A3E` | Gains and improvements, as signed text with an arrow. |
+| `gain-700` | `#16794A` | Gains and improvements, as signed text with an arrow. |
 | `loss-700` | `#B42318` | Losses and figures that got worse, as signed text with an arrow. |
 | `teal-700` | `#2E6B5E` | Success text, secondary button fill (white label) |
 | `rust-050` / `teal-050` | `#FBEADF` / `#E4F0EC` | Tint backgrounds |

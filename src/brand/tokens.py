@@ -47,7 +47,7 @@ WHITE = "#FFFFFF"  # labels on RUST_700 / TEAL_700 / PETROL_900 fills only
 # Money that changed sign or value: a gain and a loss (ADR 0002). Text on the
 # light surfaces, always with a sign and an arrow, never alone. Teal and rust
 # keep meaning "money in" and "money out"; these mean "better" and "worse".
-GAIN_700 = "#267A3E"  # gains, figures that improved
+GAIN_700 = "#16794A"  # gains, figures that improved
 LOSS_700 = "#B42318"  # losses, figures that got worse
 
 #: Every colour by its CSS name. Renderers iterate this, in this order.
